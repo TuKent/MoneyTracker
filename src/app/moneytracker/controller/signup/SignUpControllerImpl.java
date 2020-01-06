@@ -1,7 +1,9 @@
-package app.moneytracker.controller.signup;
+package app.moneytracker.controller;
 
-import app.moneytracker.model.user.User;
-import app.moneytracker.model.user.UserModel;
+import app.moneytracker.model.User;
+import app.moneytracker.model.UserModel;
+import app.moneytracker.state.State;
+import app.moneytracker.state.StateManager;
 import app.moneytracker.view.signup.SignUp;
 
 import javax.swing.*;
@@ -49,6 +51,7 @@ public class SignUpControllerImpl implements SignUpController {
             user.setUsername(fullName);
             user.setPassword(password);
             userModel.add(user);
+            StateManager.getInstance().show(State.SIGN_IN);
         }
     }
 }

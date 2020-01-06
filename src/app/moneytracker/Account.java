@@ -14,7 +14,7 @@ public class Account {
 
     private User user;
 
-    private Account() {
+    public Account() {
     }
 
     public void setUser(User user) {
