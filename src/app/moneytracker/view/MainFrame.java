@@ -9,6 +9,9 @@ import app.moneytracker.view.signin.SignIn;
 import app.moneytracker.view.signup.SignUp;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 
 public class MainFrame extends JFrame {
 
@@ -33,6 +36,54 @@ public class MainFrame extends JFrame {
     private void initComponents() {
 
         initAllStates();
+
+        initMenuBar();
+    }
+
+    private void initMenuBar() {
+
+        JMenuBar menuBar = new JMenuBar();
+
+        initFileMenu(menuBar);
+        initCategoryMenu(menuBar);
+
+        setJMenuBar(menuBar);
+    }
+
+    private void initFileMenu(JMenuBar menuBar) {
+
+        JMenu fileMenu = new JMenu("File");
+        fileMenu.setMnemonic(KeyEvent.VK_F);
+
+        JMenuItem exitMenuItem = new JMenuItem("Exit", KeyEvent.VK_X);
+        exitMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, ActionEvent.ALT_MASK));
+        exitMenuItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+        fileMenu.add(exitMenuItem);
+
+        menuBar.add(fileMenu);
+    }
+
+    private void initCategoryMenu(JMenuBar menuBar) {
+
+        JMenu categoryMenu = new JMenu("Category");
+        categoryMenu.setMnemonic(KeyEvent.VK_C);
+
+        JMenuItem showMenuItem = new JMenuItem("Show", KeyEvent.VK_S);
+        showMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H, ActionEvent.ALT_MASK));
+        showMenuItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                StateManager.getInstance().show(State.CATEGORY);
+            }
+        });
+        categoryMenu.add(showMenuItem);
+
+        menuBar.add(categoryMenu);
     }
 
     private void initAllStates() {
