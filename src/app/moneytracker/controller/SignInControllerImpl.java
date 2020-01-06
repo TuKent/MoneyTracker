@@ -51,7 +51,6 @@ public class SignInControllerImpl implements SignInController{
             else {
                 Account account = new Account();
                 account.setUser(user);
-                
                 StateManager.getInstance().show(State.CATEGORY);
             }
         }
