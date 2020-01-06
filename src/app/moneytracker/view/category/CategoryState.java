@@ -1,6 +1,8 @@
 package app.moneytracker.view.category;
 
 import app.moneytracker.state.Pane;
+import app.moneytracker.state.State;
+import app.moneytracker.state.StateManager;
 import app.util.Debug;
 
 import javax.swing.*;
@@ -16,6 +18,7 @@ public class CategoryState extends Pane {
     private JButton deleteButton;
     private JButton editButton;
     private JButton newButton;
+    private JButton backToHomeButton;
 
     public CategoryState() {
 
@@ -43,6 +46,13 @@ public class CategoryState extends Pane {
             @Override
             public void actionPerformed(ActionEvent e) {
                 onDeleteClicked(e);
+            }
+        });
+
+        backToHomeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                StateManager.getInstance().show(State.MAIN);
             }
         });
     }
