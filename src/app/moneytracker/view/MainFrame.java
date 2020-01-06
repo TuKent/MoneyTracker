@@ -5,6 +5,7 @@ import app.moneytracker.state.StateManager;
 import app.moneytracker.view.action.ActionState;
 import app.moneytracker.view.intro.IntroState;
 import app.moneytracker.view.main.MainState;
+import app.moneytracker.view.signin.SignIn;
 
 import javax.swing.*;
 
@@ -31,6 +32,7 @@ public class MainFrame extends JFrame {
     private void initComponents() {
 
         stateManager.add(State.INTRO, new IntroState());
+        stateManager.add(State.SIGN_IN, new SignIn());
         stateManager.add(State.MAIN, new MainState());
         stateManager.add(State.ACTION, new ActionState());
     }
