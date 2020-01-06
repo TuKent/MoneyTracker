@@ -18,7 +18,7 @@
           <grid row="6" column="2" row-span="1" col-span="3" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
         </constraints>
       </vspacer>
-      <component id="680dd" class="javax.swing.JTextField" binding="UsernameTxt">
+      <component id="680dd" class="javax.swing.JTextField" binding="usernameTextField">
         <constraints>
           <grid row="2" column="2" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -42,7 +42,7 @@
           <text value="Password"/>
         </properties>
       </component>
-      <component id="e8ea7" class="javax.swing.JPasswordField" binding="PasswordTxt">
+      <component id="e8ea7" class="javax.swing.JPasswordField" binding="passwordTextField">
         <constraints>
           <grid row="3" column="2" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -58,7 +58,7 @@
           <text value="Confirm Password"/>
         </properties>
       </component>
-      <component id="a2ab7" class="javax.swing.JPasswordField" binding="CPasswordTxt">
+      <component id="a2ab7" class="javax.swing.JPasswordField" binding="confirmpasswordTextField">
         <constraints>
           <grid row="4" column="2" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -76,29 +76,30 @@
           <grid row="2" column="5" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
       </hspacer>
-      <component id="138fa" class="javax.swing.JLabel">
-        <constraints>
-          <grid row="1" column="2" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <background color="-894693"/>
-          <text value="Sign Up"/>
-        </properties>
-      </component>
-      <component id="48689" class="javax.swing.JButton" binding="SignUpBtn">
+      <component id="48689" class="javax.swing.JButton" binding="signupButton">
         <constraints>
           <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Register"/>
+          <text value="OK"/>
         </properties>
       </component>
-      <component id="a33bb" class="javax.swing.JButton" binding="SignInBtn">
+      <component id="a33bb" class="javax.swing.JButton" binding="signinButton">
         <constraints>
           <grid row="5" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Go to Sign In"/>
+        </properties>
+      </component>
+      <component id="138fa" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-894693"/>
+          <font size="48" style="1"/>
+          <text value="SIGN UP"/>
         </properties>
       </component>
     </children>

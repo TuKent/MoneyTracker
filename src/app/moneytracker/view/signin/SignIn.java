@@ -15,23 +15,23 @@ import java.awt.event.ActionListener;
 public class SignIn extends Pane {
 
     private JPanel rootPanel;
-    private JTextField UsernameTxt;
-    private JPasswordField PasswordTxt;
-    private JButton SignInBtn;
-    private JButton SignUpBtn;
+    private JTextField usernameTextField;
+    private JPasswordField passwordTextField;
+    private JButton signinButton;
+    private JButton signupButton;
 
     private UserModel usersModel;
 
     public SignIn() {
         setComponent(rootPanel);
-        SignInBtn.addActionListener(new ActionListener() {
+        signinButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 onLogin(e);
             }
         });
 
-        SignUpBtn.addActionListener(new ActionListener() {
+        signupButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 StateManager.getInstance().show(State.SIGN_UP);
@@ -45,12 +45,12 @@ public class SignIn extends Pane {
         controller.oldMember();
     }
 
-    public String  getPasswordTxt() {
-        return new String(UsernameTxt.getText());
+    public String getPasswordTextField() {
+        return new String(usernameTextField.getText());
     }
 
-    public String getUsernameTxt() {
-        return new String(PasswordTxt.getPassword());
+    public String getUsernameTextField() {
+        return new String(passwordTextField.getPassword());
     }
 
 

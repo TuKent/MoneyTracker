@@ -16,23 +16,23 @@ public class SignUp extends Pane {
 
     private JPanel rootPanel;
 
-    private JTextField UsernameTxt;
-    private JPasswordField PasswordTxt;
-    private JPasswordField CPasswordTxt;
-    private JButton SignUpBtn;
-    private JButton SignInBtn;
+    private JTextField usernameTextField;
+    private JPasswordField passwordTextField;
+    private JPasswordField confirmpasswordTextField;
+    private JButton signupButton;
+    private JButton signinButton;
 
     private UserModel usersModel;
 
     public SignUp(){
         setComponent(rootPanel);
-        SignUpBtn.addActionListener(new ActionListener() {
+        signupButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 onRegister(e);
             }
         });
-        SignInBtn.addActionListener(new ActionListener() {
+        signinButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 StateManager.getInstance().show(State.SIGN_IN);
@@ -46,16 +46,16 @@ public class SignUp extends Pane {
         controller.newMember();
     }
 
-    public String getUsernameTxt() {
-        return new String(UsernameTxt.getText());
+    public String getUsernameTextField() {
+        return usernameTextField.getText();
     }
 
-    public String getPasswordTxt() {
-        return new String(PasswordTxt.getPassword());
+    public String getPasswordTextField() {
+        return new String(passwordTextField.getPassword());
     }
 
-    public String getCPasswordTxt() {
-                        return new String(CPasswordTxt.getPassword());
+    public String getConfirmpassword() {
+                        return new String(confirmpasswordTextField.getPassword());
     }
 
 

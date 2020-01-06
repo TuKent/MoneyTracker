@@ -1,5 +1,6 @@
 package app.moneytracker.controller.signup;
 
+import app.moneytracker.Account;
 import app.moneytracker.model.user.User;
 import app.moneytracker.model.user.UserModel;
 import app.moneytracker.state.State;
@@ -25,9 +26,9 @@ public class SignUpControllerImpl implements SignUpController {
 
     @Override
     public void newMember() {
-        String fullName = view.getUsernameTxt();
-        String password = view.getPasswordTxt();
-        String cpassword = view.getCPasswordTxt();
+        String fullName = view.getUsernameTextField();
+        String password = view.getPasswordTextField();
+        String cpassword = view.getConfirmpassword();
 
         if (fullName.trim().equals("")) {
             JOptionPane.showMessageDialog(parent, "Username was not null", "Something wrong here !", JOptionPane.OK_OPTION);
@@ -42,7 +43,9 @@ public class SignUpControllerImpl implements SignUpController {
             user.setUsername(fullName);
             user.setPassword(password);
             userModel.add(user);
-            StateManager.getInstance().show(State.SIGN_IN);
+            Account account = new Account();
+            account.setUser(user);
+            StateManager.getInstance().show(State.MAIN);
         }
     }
 }

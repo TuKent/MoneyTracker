@@ -26,8 +26,8 @@ public class SignInControllerImpl implements SignInController {
 
     @Override
     public void oldMember() {
-        String userName = view.getUsernameTxt();
-        String password = view.getPasswordTxt();
+        String userName = view.getUsernameTextField();
+        String password = view.getPasswordTextField();
 
         if (userName.trim().isEmpty()) {
             JOptionPane.showMessageDialog(parent, "Username was not null", "Something wrong here !! ", JOptionPane.OK_OPTION);
