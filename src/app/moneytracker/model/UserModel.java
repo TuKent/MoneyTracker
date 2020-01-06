@@ -7,4 +7,6 @@ public interface UserModel {
     void update(User user);
 
     void remove(int id);
+
+    boolean checkUserandPassword(User user);
 }
