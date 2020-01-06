@@ -2,7 +2,6 @@ package app.moneytracker.view;
 
 import app.moneytracker.state.State;
 import app.moneytracker.state.StateManager;
-import app.moneytracker.view.action.ActionState;
 import app.moneytracker.view.intro.IntroState;
 import app.moneytracker.view.main.MainState;
 import app.moneytracker.view.signin.SignIn;
@@ -40,6 +39,5 @@ public class MainFrame extends JFrame {
         stateManager.add(State.SIGN_UP, new SignUp());
         stateManager.add(State.SIGN_IN, new SignIn());
         stateManager.add(State.MAIN, new MainState());
-        stateManager.add(State.ACTION, new ActionState());
     }
 }
