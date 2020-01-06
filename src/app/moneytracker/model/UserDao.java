@@ -7,4 +7,6 @@ public interface UserDao {
     void update(User user);
 
     void delete(int id);
+
+    User getUsernamandPassword(User users);
 }
