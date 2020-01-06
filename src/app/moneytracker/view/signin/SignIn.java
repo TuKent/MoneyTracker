@@ -7,6 +7,9 @@ import javax.swing.*;
 public class SignIn extends Pane {
 
     private JPanel rootPanel;
+    private JTextField UsernameTxt;
+    private JPasswordField PasswordTxt;
+    private JButton SignInBtn;
 
     public SignIn() {
         setComponent(rootPanel);
