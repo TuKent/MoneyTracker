@@ -5,5 +5,5 @@ public enum State {
     SIGN_UP,
     SIGN_IN,
     MAIN,
-    ACTION,
+    CATEGORY,
 }

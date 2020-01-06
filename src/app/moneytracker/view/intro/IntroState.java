@@ -3,6 +3,7 @@ package app.moneytracker.view.intro;
 import app.moneytracker.state.Pane;
 import app.moneytracker.state.State;
 import app.moneytracker.state.StateManager;
+import app.util.Debug;
 
 import javax.swing.*;
 
@@ -34,11 +35,11 @@ public class IntroState extends Pane {
 
     @Override
     public void onPaneOpened() {
-        System.out.println(TAG + " - onPaneOpened");
+        Debug.i(TAG, "onPaneOpened()");
     }
 
     @Override
     public void onPaneClosed() {
-        System.out.println(TAG + " - onPaneClosed");
+        Debug.i(TAG, "onPaneClosed()");
     }
 }

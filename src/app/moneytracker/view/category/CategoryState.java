@@ -1,18 +1,17 @@
-package app.moneytracker.view.main;
+package app.moneytracker.view.category;
 
 import app.moneytracker.state.Pane;
 import app.util.Debug;
 
 import javax.swing.*;
 
-public class MainState extends Pane {
+public class CategoryState extends Pane {
 
-    private static final String TAG = MainState.class.getName();
+    private static final String TAG = CategoryState.class.getSimpleName();
 
     private JPanel rootPanel;
 
-    public MainState() {
-
+    public CategoryState() {
         setComponent(rootPanel);
     }
 
