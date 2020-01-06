@@ -27,19 +27,19 @@ public class MainFrame extends JFrame {
 
         initComponents();
 
-        open(State.INTRO);
+        stateManager.show(State.INTRO);
     }
 
     private void initComponents() {
 
+        initAllStates();
+    }
+
+    private void initAllStates() {
         stateManager.add(State.INTRO, new IntroState());
         stateManager.add(State.SIGN_UP, new SignUp());
         stateManager.add(State.SIGN_IN, new SignIn());
         stateManager.add(State.MAIN, new MainState());
         stateManager.add(State.ACTION, new ActionState());
-    }
-
-    public void open(final State state) {
-        stateManager.show(state);
     }
 }
