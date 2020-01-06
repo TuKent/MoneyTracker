@@ -1,11 +1,9 @@
 package app.moneytracker.view.signin;
 
-import app.moneytracker.controller.SignInController;
-import app.moneytracker.controller.SignInControllerImpl;
-import app.moneytracker.controller.SignUpController;
-import app.moneytracker.controller.SignUpControllerImpl;
-import app.moneytracker.model.UserModel;
-import app.moneytracker.model.UserModelImpl;
+import app.moneytracker.controller.signin.SignInController;
+import app.moneytracker.controller.signin.SignInControllerImpl;
+import app.moneytracker.model.user.UserModel;
+import app.moneytracker.model.user.UserModelImpl;
 import app.moneytracker.state.Pane;
 import app.moneytracker.state.State;
 import app.moneytracker.state.StateManager;
