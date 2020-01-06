@@ -25,7 +25,7 @@ public class IntroState extends Pane {
                     e.printStackTrace();
                 }
 
-                StateManager.getInstance().show(State.SIGN_IN);
+                StateManager.getInstance().show(State.SIGN_UP);
             }
         });
         thread.setPriority(Thread.MAX_PRIORITY);

@@ -4,6 +4,8 @@ public class UserModelImpl implements UserModel {
 
     @Override
     public void add(User user) {
+        UserDao userDao = new UserDaoImpl();
+        userDao.insert(user);
     }
 
     @Override
