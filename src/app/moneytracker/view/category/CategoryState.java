@@ -4,15 +4,56 @@ import app.moneytracker.state.Pane;
 import app.util.Debug;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class CategoryState extends Pane {
 
     private static final String TAG = CategoryState.class.getSimpleName();
 
     private JPanel rootPanel;
+    private JTable categoryTable;
+    private JButton deleteButton;
+    private JButton editButton;
+    private JButton newButton;
 
     public CategoryState() {
+
         setComponent(rootPanel);
+        initUiComponents();
+    }
+
+    private void initUiComponents() {
+
+        newButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                onNewClicked(e);
+            }
+        });
+
+        editButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                onEditClicked(e);
+            }
+        });
+
+        deleteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                onDeleteClicked(e);
+            }
+        });
+    }
+
+    private void onNewClicked(ActionEvent e) {
+    }
+
+    private void onEditClicked(ActionEvent e) {
+    }
+
+    private void onDeleteClicked(ActionEvent e) {
     }
 
     @Override
