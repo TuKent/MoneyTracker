@@ -1,4 +1,4 @@
-package app.moneytracker.model;
+package app.moneytracker.model.user;
 
 public interface UserModel {
 

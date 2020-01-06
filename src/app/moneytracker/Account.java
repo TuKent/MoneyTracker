@@ -1,6 +1,6 @@
 package app.moneytracker;
 
-import app.moneytracker.model.User;
+import app.moneytracker.model.user.User;
 
 public class Account {
 

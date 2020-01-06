@@ -1,4 +1,4 @@
-package app.moneytracker.model;
+package app.moneytracker.model.category;
 
 public class CategoryModelImpl implements CategoryModel {
 }

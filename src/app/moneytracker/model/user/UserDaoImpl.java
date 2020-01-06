@@ -1,4 +1,6 @@
-package app.moneytracker.model;
+package app.moneytracker.model.user;
+
+import app.moneytracker.model.Database;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

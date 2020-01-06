@@ -1,11 +1,10 @@
-package app.moneytracker.controller;
+package app.moneytracker.controller.signin;
 
-import app.moneytracker.model.User;
-import app.moneytracker.model.UserModel;
+import app.moneytracker.model.user.User;
+import app.moneytracker.model.user.UserModel;
 import app.moneytracker.state.State;
 import app.moneytracker.state.StateManager;
 import app.moneytracker.view.signin.SignIn;
-import app.moneytracker.view.signup.SignUp;
 
 import javax.swing.*;
 import java.awt.*;

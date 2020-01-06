@@ -1,7 +1,7 @@
-package app.moneytracker.controller;
+package app.moneytracker.controller.signup;
 
-import app.moneytracker.model.User;
-import app.moneytracker.model.UserModel;
+import app.moneytracker.model.user.User;
+import app.moneytracker.model.user.UserModel;
 import app.moneytracker.view.signup.SignUp;
 
 import javax.swing.*;
