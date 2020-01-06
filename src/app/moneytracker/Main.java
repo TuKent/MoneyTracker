@@ -1,6 +1,6 @@
-package com.app.moneytracker;
+package app.moneytracker;
 
-import com.app.moneytracker.view.MainFrame;
+import app.moneytracker.view.MainFrame;
 
 import java.awt.*;
 

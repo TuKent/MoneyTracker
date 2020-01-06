@@ -1,4 +1,4 @@
-package com.app.moneytracker.state;
+package app.moneytracker.state;
 
 public enum State {
 

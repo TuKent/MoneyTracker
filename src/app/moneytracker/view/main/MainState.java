@@ -1,8 +1,8 @@
-package com.app.moneytracker.state.main;
+package app.moneytracker.view.main;
 
-import com.app.moneytracker.state.Pane;
-import com.app.moneytracker.state.State;
-import com.app.moneytracker.state.StateManager;
+import app.moneytracker.state.Pane;
+import app.moneytracker.state.State;
+import app.moneytracker.state.StateManager;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

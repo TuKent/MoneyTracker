@@ -1,4 +1,4 @@
-package com.app.moneytracker.state.menu;
+package app.moneytracker.view.menu;
 
 import javax.swing.*;
 
