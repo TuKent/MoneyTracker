@@ -1,5 +1,6 @@
 package app.moneytracker.controller;
 
+import app.moneytracker.Account;
 import app.moneytracker.model.User;
 import app.moneytracker.model.UserModel;
 import app.moneytracker.state.State;
@@ -48,6 +49,9 @@ public class SignInControllerImpl implements SignInController{
                 JOptionPane.showMessageDialog(parent,"Username or password was wrong ","Something wrong here !! ",JOptionPane.OK_OPTION);
             }
             else {
+                Account account = new Account();
+                account.setUser(user);
+                
                 StateManager.getInstance().show(State.CATEGORY);
             }
         }
