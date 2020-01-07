@@ -1,12 +1,13 @@
 package app.moneytracker.view.category;
 
 import app.moneytracker.model.category.Category;
+import app.moneytracker.model.category.CategoryObserver;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CategoryTableModel extends AbstractTableModel {
+public class CategoryTableModel extends AbstractTableModel implements CategoryObserver {
 
     private static final String[] COLUMN_NAMES = {"Name", "Type"};
     private static final int NAME = 0;
@@ -37,5 +38,12 @@ public class CategoryTableModel extends AbstractTableModel {
         } else {
             return category.getType();
         }
+    }
+
+    @Override
+    public void onDataChanged(List<Category> categories) {
+        this.categories.clear();
+        this.categories.addAll(categories);
+        this.fireTableDataChanged();
     }
 }

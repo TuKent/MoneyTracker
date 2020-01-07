@@ -1,6 +1,25 @@
 package app.moneytracker.model.user;
 
+import app.moneytracker.model.category.CategoryObserver;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class UserModelImpl implements UserModel {
+
+    private List<CategoryObserver> observers = new ArrayList<>();
+
+    @Override
+    public void registerObserver(CategoryObserver observer) {
+        if (!observers.contains(observer)) {
+            observers.add(observer);
+        }
+    }
+
+    @Override
+    public void unregisterObserver(CategoryObserver observer) {
+        observers.remove(observer);
+    }
 
     @Override
     public void add(User user) {
