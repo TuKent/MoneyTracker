@@ -1,7 +1,7 @@
 package app.moneytracker.view.signin;
 
-import app.moneytracker.controller.signin.SignInController;
-import app.moneytracker.controller.signin.SignInControllerImpl;
+import app.moneytracker.Account;
+import app.moneytracker.model.user.User;
 import app.moneytracker.model.user.UserModel;
 import app.moneytracker.model.user.UserModelImpl;
 import app.moneytracker.state.Pane;
@@ -15,44 +15,50 @@ import java.awt.event.ActionListener;
 public class SignIn extends Pane {
 
     private JPanel rootPanel;
-    private JTextField usernameTextField;
-    private JPasswordField passwordTextField;
-    private JButton signinButton;
-    private JButton signupButton;
 
-    private UserModel usersModel;
+    private JTextField usernameField;
+    private JPasswordField passwordField;
+
+    private JButton signInButton;
+    private JButton signUpButton;
 
     public SignIn() {
+
         setComponent(rootPanel);
-        signinButton.addActionListener(new ActionListener() {
+
+        signInButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                onLogin(e);
+                onSignInClicked(e);
             }
         });
 
-        signupButton.addActionListener(new ActionListener() {
+        signUpButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                StateManager.getInstance().show(State.SIGN_UP);
+                onSignUpClicked(e);
             }
         });
     }
 
-    private void onLogin(ActionEvent e) {
-        usersModel = new UserModelImpl();
-        SignInController controller = new SignInControllerImpl(rootPanel,usersModel,this);
-        controller.oldMember();
+    private void onSignInClicked(ActionEvent e) {
+
+        String username = usernameField.getText();
+        String password = passwordField.getSelectedText();
+
+        UserModel model = new UserModelImpl();
+        User user = model.getUser(username, password);
+        if (user != null) {
+            Account.getInstance().setUser(user);
+            StateManager.getInstance().show(State.MAIN);
+        } else {
+            JOptionPane.showMessageDialog(rootPanel, "Account not found!");
+        }
     }
 
-    public String getPasswordTextField() {
-        return new String(usernameTextField.getText());
+    private void onSignUpClicked(ActionEvent e) {
+        StateManager.getInstance().show(State.SIGN_UP);
     }
-
-    public String getUsernameTextField() {
-        return new String(passwordTextField.getPassword());
-    }
-
 
     @Override
     public void onPaneOpened() {

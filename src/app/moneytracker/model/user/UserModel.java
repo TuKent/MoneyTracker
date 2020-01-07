@@ -8,5 +8,5 @@ public interface UserModel {
 
     void remove(int id);
 
-    boolean checkAccount(User user);
+    User getUser(String username, String password);
 }

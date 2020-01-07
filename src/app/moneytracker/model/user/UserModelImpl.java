@@ -17,14 +17,10 @@ public class UserModelImpl implements UserModel {
     }
 
     @Override
-    public boolean checkAccount(User users) {
+    public User getUser(String username, String password) {
 
-        UserDao userDao = new UserDaoImpl();
-        User user = userDao.checkAccount(users);
-        if (user != null) {
-            return true;
-        } else {
-            return false;
-        }
+        UserDao dao = new UserDaoImpl();
+        User user = dao.checkAccount(username, password);
+        return user;
     }
 }
