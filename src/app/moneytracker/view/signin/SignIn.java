@@ -44,13 +44,17 @@ public class SignIn extends Pane {
     private void onSignInClicked(ActionEvent e) {
 
         String username = usernameField.getText();
-        String password = passwordField.getSelectedText();
+        String password = new String(passwordField.getPassword());
 
         UserModel model = new UserModelImpl();
-        User user = model.getUser(username, password);
+        User user = model.getUser(username);
         if (user != null) {
-            Account.getInstance().setUser(user);
-            StateManager.getInstance().show(State.MAIN);
+            if (user.getPassword().equals(password)) {
+                Account.getInstance().setUser(user);
+                StateManager.getInstance().show(State.MAIN);
+            } else {
+                JOptionPane.showMessageDialog(rootPanel, "Incorrect password!");
+            }
         } else {
             JOptionPane.showMessageDialog(rootPanel, "Account not found!");
         }

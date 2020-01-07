@@ -17,10 +17,10 @@ public class UserModelImpl implements UserModel {
     }
 
     @Override
-    public User getUser(String username, String password) {
+    public User getUser(String username) {
 
         UserDao dao = new UserDaoImpl();
-        User user = dao.checkAccount(username, password);
+        User user = dao.getUser(username);
         return user;
     }
 }

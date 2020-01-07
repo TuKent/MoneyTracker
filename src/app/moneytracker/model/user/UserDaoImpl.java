@@ -44,21 +44,21 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public User checkAccount(String username, String password) {
+    public User getUser(String username) {
 
         Database db = new Database();
         try {
-            final String SQL_GET_USERNAME_AND_PASSWORD = "SELECT * FROM Users WHERE Username=? and Password=?";
+            final String SQL_GET_USERNAME_AND_PASSWORD = "SELECT * FROM Users WHERE Username=?";
 
             PreparedStatement ps = db.getConnection().prepareStatement(SQL_GET_USERNAME_AND_PASSWORD);
             ps.setString(1, username);
-            ps.setString(2, password);
 
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
+                int id = rs.getInt(1);
                 String strUsername = rs.getString(2);
                 String strPassword = rs.getString(3);
-                User user = new User(0, strUsername,strPassword);
+                User user = new User(id, strUsername,strPassword);
                 return user;
             }
         } catch (SQLException e) {

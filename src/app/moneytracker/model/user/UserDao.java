@@ -8,5 +8,5 @@ public interface UserDao {
 
     void delete(int id);
 
-    User checkAccount(String username, String password);
+    User getUser(String username);
 }
