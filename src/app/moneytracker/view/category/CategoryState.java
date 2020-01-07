@@ -3,7 +3,6 @@ package app.moneytracker.view.category;
 import app.moneytracker.state.Pane;
 import app.moneytracker.state.State;
 import app.moneytracker.state.StateManager;
-import app.util.Debug;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -15,6 +14,7 @@ public class CategoryState extends Pane {
 
     private JPanel rootPanel;
     private JTable categoryTable;
+    private CategoryTableModel categoryTableModel;
     private JButton deleteButton;
     private JButton editButton;
     private JButton newButton;
@@ -27,6 +27,9 @@ public class CategoryState extends Pane {
     }
 
     private void initUiComponents() {
+
+        categoryTableModel = new CategoryTableModel();
+        categoryTable.setModel(categoryTableModel);
 
         newButton.addActionListener(new ActionListener() {
             @Override
@@ -68,11 +71,9 @@ public class CategoryState extends Pane {
 
     @Override
     public void onPaneOpened() {
-        Debug.i(TAG, "onPaneOpened()");
     }
 
     @Override
     public void onPaneClosed() {
-        Debug.i(TAG, "onPaneClosed()");
     }
 }
