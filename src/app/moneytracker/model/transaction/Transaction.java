@@ -6,18 +6,18 @@ public class Transaction {
     private int userId;
     private int categoryId;
     private float amount;
-    private long date;
+    private int timeInSeconds;
     private String description;
 
     public Transaction() {
     }
 
-    public Transaction(int id, int userId, int categoryId, float amount, long date, String description) {
+    public Transaction(int id, int userId, int categoryId, float amount, int timeInSeconds, String description) {
         this.id = id;
         this.userId = userId;
         this.categoryId = categoryId;
         this.amount = amount;
-        this.date = date;
+        this.timeInSeconds = timeInSeconds;
         this.description = description;
     }
 
@@ -53,12 +53,12 @@ public class Transaction {
         this.amount = amount;
     }
 
-    public long getDate() {
-        return date;
+    public long getTimeInSeconds() {
+        return timeInSeconds;
     }
 
-    public void setDate(long date) {
-        this.date = date;
+    public void setTimeInSeconds(int timeInSeconds) {
+        this.timeInSeconds = timeInSeconds;
     }
 
     public String getDescription() {

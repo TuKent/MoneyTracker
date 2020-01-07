@@ -55,7 +55,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public User getUsernamandPassword(User users) {
+    public User checkAccount(User users) {
         Database db = new Database();
         final String SQL_GET_USERNAME_AND_PASSWORD = "SELECT * FROM UsersTable WHERE username = ? and password = ?";
         PreparedStatement ps = null;

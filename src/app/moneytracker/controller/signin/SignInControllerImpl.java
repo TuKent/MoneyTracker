@@ -37,7 +37,7 @@ public class SignInControllerImpl implements SignInController {
             User user = new User();
             user.setUsername(userName);
             user.setPassword(password);
-            boolean booleans = userModel.checkUserandPassword(user);
+            boolean booleans = userModel.checkAccount(user);
             if (!booleans) {
                 JOptionPane.showMessageDialog(parent, "Username or password was wrong ", "Something wrong here !! ", JOptionPane.OK_OPTION);
             } else {

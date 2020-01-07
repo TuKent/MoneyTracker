@@ -1,18 +1,18 @@
 package app.moneytracker.model.category;
 
 public class Category {
+
     int id;
     String name;
-    String type;
-    public Category()
-    {
+    boolean isExpense;
 
+    public Category() {
     }
 
-    public Category(int id, String name, String type) {
+    public Category(int id, String name, boolean isExpense) {
         this.id = id;
         this.name = name;
-        this.type = type;
+        this.isExpense = isExpense;
     }
 
     public int getId() {
@@ -31,11 +31,11 @@ public class Category {
         this.name = name;
     }
 
-    public String getType() {
-        return type;
+    public boolean getIsExpense() {
+        return isExpense;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setIsExpense(boolean isExpense) {
+        this.isExpense = isExpense;
     }
 }

@@ -11,7 +11,7 @@ public class CategoryTableModel extends AbstractTableModel implements CategoryOb
 
     private static final String[] COLUMN_NAMES = {"Name", "Type"};
     private static final int NAME = 0;
-    private static final int TYPE = 0;
+    private static final int TYPE = 1;
 
     private List<Category> categories = new ArrayList<>();
 
@@ -36,7 +36,7 @@ public class CategoryTableModel extends AbstractTableModel implements CategoryOb
         if (columnIndex == NAME) {
             return category.getName();
         } else {
-            return category.getType();
+            return category.getIsExpense();
         }
     }
 

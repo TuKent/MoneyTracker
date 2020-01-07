@@ -1,5 +1,9 @@
 package app.moneytracker.view.category;
 
+import app.moneytracker.controller.category.NewCategoryController;
+import app.moneytracker.controller.category.NewCategoryControllerImpl;
+import app.moneytracker.model.category.CategoryModel;
+import app.moneytracker.model.category.CategoryModelImpl;
 import app.moneytracker.state.Pane;
 import app.moneytracker.state.State;
 import app.moneytracker.state.StateManager;
@@ -13,17 +17,25 @@ public class CategoryState extends Pane {
     private static final String TAG = CategoryState.class.getSimpleName();
 
     private JPanel rootPanel;
+
     private JTable categoryTable;
     private CategoryTableModel categoryTableModel;
+
     private JButton deleteButton;
     private JButton editButton;
     private JButton newButton;
     private JButton backToHomeButton;
 
+    private CategoryModel model;
+
     public CategoryState() {
 
         setComponent(rootPanel);
+
         initUiComponents();
+
+        model = new CategoryModelImpl();
+        model.registerObserver(categoryTableModel);
     }
 
     private void initUiComponents() {
@@ -61,6 +73,8 @@ public class CategoryState extends Pane {
     }
 
     private void onNewClicked(ActionEvent e) {
+        NewCategoryController controller = new NewCategoryControllerImpl(rootPanel, model, new CategoryInput());
+        controller.newCategory();
     }
 
     private void onEditClicked(ActionEvent e) {
@@ -71,6 +85,7 @@ public class CategoryState extends Pane {
 
     @Override
     public void onPaneOpened() {
+        model.pull();
     }
 
     @Override

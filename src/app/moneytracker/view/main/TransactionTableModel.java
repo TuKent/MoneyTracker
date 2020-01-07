@@ -39,7 +39,7 @@ public class TransactionTableModel extends AbstractTableModel {
         } else if (columnIndex == AMOUNT) {
             return transaction.getAmount();
         } else if (columnIndex == DATE) {
-            return transaction.getDate();
+            return transaction.getTimeInSeconds();
         } else{
             return transaction.getDescription();
         }

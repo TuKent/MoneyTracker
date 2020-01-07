@@ -1,9 +1,9 @@
 package app.moneytracker.view.intro;
 
+import app.moneytracker.model.Database;
 import app.moneytracker.state.Pane;
 import app.moneytracker.state.State;
 import app.moneytracker.state.StateManager;
-import app.util.Debug;
 
 import javax.swing.*;
 
@@ -20,7 +20,12 @@ public class IntroState extends Pane {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
+
                 try {
+                    Database db = new Database();
+                    db.initiate();
+                    db.close();
+
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -35,11 +40,9 @@ public class IntroState extends Pane {
 
     @Override
     public void onPaneOpened() {
-        Debug.i(TAG, "onPaneOpened()");
     }
 
     @Override
     public void onPaneClosed() {
-        Debug.i(TAG, "onPaneClosed()");
     }
 }
