@@ -47,9 +47,9 @@ public class CategoryModelImpl implements CategoryModel {
 
     private void notifyObservers() {
 
+        CategoryDao dao = new CategoryDaoImpl();
+        List<Category> categories = dao.getAllCategories();
         for (CategoryObserver observer: observers) {
-            CategoryDao dao = new CategoryDaoImpl();
-            List<Category> categories = dao.getAllCategories();
             observer.onDataChanged(categories);
         }
     }

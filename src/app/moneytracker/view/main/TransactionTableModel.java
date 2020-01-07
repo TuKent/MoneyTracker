@@ -1,12 +1,13 @@
 package app.moneytracker.view.main;
 
 import app.moneytracker.model.transaction.Transaction;
+import app.moneytracker.model.transaction.TransactionObserver;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TransactionTableModel extends AbstractTableModel {
+public class TransactionTableModel extends AbstractTableModel implements TransactionObserver {
 
     private static final String[] COLUMN_NAMES = {"Category", "Amount", "Date", "Description"};
     private static final int CATEGORY = 0;
@@ -43,5 +44,12 @@ public class TransactionTableModel extends AbstractTableModel {
         } else{
             return transaction.getDescription();
         }
+    }
+
+    @Override
+    public void onDataChanged(List<Transaction> transactions) {
+        this.transactions.clear();
+        this.transactions.addAll(transactions);
+        this.fireTableDataChanged();
     }
 }

@@ -1,5 +1,7 @@
 package app.moneytracker.view.main;
 
+import app.moneytracker.model.transaction.TransactionModel;
+import app.moneytracker.model.transaction.TransactionModelImpl;
 import app.moneytracker.state.Pane;
 
 import javax.swing.*;
@@ -11,11 +13,15 @@ public class MainState extends Pane {
     private static final String TAG = MainState.class.getName();
 
     private JPanel rootPanel;
+
     private JTable transactionTable;
     private TransactionTableModel transactionTableModel;
+
     private JButton deleteButton;
     private JButton editButton;
     private JButton newButton;
+
+    private TransactionModel model;
 
     public MainState() {
 
@@ -26,7 +32,11 @@ public class MainState extends Pane {
 
     private void initUiComponents() {
 
+        model = new TransactionModelImpl();
+
         transactionTableModel = new TransactionTableModel();
+        model.registerObserver(transactionTableModel);
+
         transactionTable.setModel(transactionTableModel);
 
         newButton.addActionListener(new ActionListener() {
