@@ -1,5 +1,6 @@
 package app.moneytracker.view.signup;
 
+import app.moneytracker.Account;
 import app.moneytracker.model.user.User;
 import app.moneytracker.model.user.UserModel;
 import app.moneytracker.model.user.UserModelImpl;
@@ -65,6 +66,7 @@ public class SignUp extends Pane {
         if (user == null) {
             User newUser = new User(username, password);
             model.add(newUser);
+            Account.getInstance().setUser(newUser);
             StateManager.getInstance().show(State.MAIN);
         } else {
             JOptionPane.showMessageDialog(rootPanel, "Account already existed!");
