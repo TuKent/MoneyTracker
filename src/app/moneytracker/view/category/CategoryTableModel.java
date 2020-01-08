@@ -41,7 +41,7 @@ public class CategoryTableModel extends AbstractTableModel implements CategoryOb
         if (columnIndex == NAME) {
             return category.getName();
         } else {
-            return category.getIsExpense();
+            return category.getIsExpense() ? "Expense (-)" : "Income (+)";
         }
     }
 
