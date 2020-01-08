@@ -1,10 +1,10 @@
 package app.moneytracker.view.category;
 
+import app.moneytracker.model.category.Categories;
 import app.moneytracker.model.category.Category;
 import app.moneytracker.model.category.CategoryObserver;
 
 import javax.swing.table.AbstractTableModel;
-import java.util.ArrayList;
 import java.util.List;
 
 public class CategoryTableModel extends AbstractTableModel implements CategoryObserver {
@@ -13,7 +13,7 @@ public class CategoryTableModel extends AbstractTableModel implements CategoryOb
     private static final int NAME = 0;
     private static final int TYPE = 1;
 
-    private List<Category> categories = new ArrayList<>();
+    private List<Category> categories = Categories.getInstance().getCategories();
 
     @Override
     public int getRowCount() {
@@ -42,8 +42,6 @@ public class CategoryTableModel extends AbstractTableModel implements CategoryOb
 
     @Override
     public void onDataChanged(List<Category> categories) {
-        this.categories.clear();
-        this.categories.addAll(categories);
         this.fireTableDataChanged();
     }
 }

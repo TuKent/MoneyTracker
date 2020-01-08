@@ -3,7 +3,7 @@ package app.moneytracker.model.category;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CategoryModelImpl implements CategoryModel {
+class CategoryModelImpl implements CategoryModel {
 
     private List<CategoryObserver> observers = new ArrayList<>();
 

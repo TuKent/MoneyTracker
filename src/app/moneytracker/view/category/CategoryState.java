@@ -1,9 +1,9 @@
 package app.moneytracker.view.category;
 
+import app.moneytracker.model.category.Categories;
 import app.moneytracker.controller.category.NewCategoryController;
 import app.moneytracker.controller.category.NewCategoryControllerImpl;
 import app.moneytracker.model.category.CategoryModel;
-import app.moneytracker.model.category.CategoryModelImpl;
 import app.moneytracker.state.Pane;
 import app.moneytracker.state.State;
 import app.moneytracker.state.StateManager;
@@ -34,7 +34,7 @@ public class CategoryState extends Pane {
 
         initUiComponents();
 
-        model = new CategoryModelImpl();
+        model = Categories.getInstance().getModel();
         model.registerObserver(categoryTableModel);
     }
 
