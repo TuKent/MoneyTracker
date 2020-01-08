@@ -45,7 +45,7 @@ public class Database {
                 + "    CategoryId integer NOT NULL,\n"
                 + "    Amount real NOT NULL,\n"
                 + "    TimeInMillis integer NOT NULL,\n"
-                + "    Description text NOT NULL\n"
+                + "    Description text\n"
                 + ");";
 
         try {
