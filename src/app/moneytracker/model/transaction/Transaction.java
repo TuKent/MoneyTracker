@@ -53,7 +53,7 @@ public class Transaction {
         this.amount = amount;
     }
 
-    public long getTimeInSeconds() {
+    public int getTimeInSeconds() {
         return timeInSeconds;
     }
 

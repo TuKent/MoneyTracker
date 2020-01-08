@@ -52,8 +52,8 @@ public class CategoryDaoImpl implements CategoryDao {
     @Override
     public List<Category> getAllCategories() {
 
-        List<Category> categories = new ArrayList<>();
         Database db = new Database();
+        List<Category> categories = new ArrayList<>();
 
         final String SQL_SELECT_ALL_CATEGORIES = "SELECT * FROM Categories";
         try {
