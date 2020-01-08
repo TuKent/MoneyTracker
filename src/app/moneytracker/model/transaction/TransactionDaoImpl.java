@@ -43,6 +43,28 @@ public class TransactionDaoImpl implements TransactionDao {
 
     @Override
     public void update(Transaction transaction) {
+
+        Database db = new Database();
+        final String SQL_UPDATE_TRANSACTION_BY_ID = "UPDATE Transactions " +
+                "SET CategoryId = ?, " +
+                "Amount = ?," +
+                "TimeInMillis = ?," +
+                "Description = ? " +
+                "WHERE ID = ?";
+
+        try {
+            PreparedStatement ps = db.getConnection().prepareStatement(SQL_UPDATE_TRANSACTION_BY_ID);
+            ps.setInt(1, transaction.getCategoryId());
+            ps.setFloat(2, transaction.getAmount());
+            ps.setLong(3, transaction.getTimeInMillis());
+            ps.setString(4, transaction.getDescription());
+            ps.setInt(5, transaction.getId());
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        db.close();
     }
 
     @Override

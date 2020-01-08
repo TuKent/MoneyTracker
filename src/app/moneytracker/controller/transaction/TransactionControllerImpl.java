@@ -48,6 +48,17 @@ class TransactionControllerImpl implements TransactionController {
 
         int option = JOptionPane.showConfirmDialog(parentComponent, input.getRootPanel(), "Edit Transaction", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
         if (option == JOptionPane.OK_OPTION) {
+            Category category = input.getCategory();
+            float amount = input.getAmount();
+            long timeInMillis = input.getTimeInMillis();
+            String description = input.getDescription();
+
+            transaction.setCategoryId(category.getId());
+            transaction.setAmount(amount);
+            transaction.setTimeInMillis(timeInMillis);
+            transaction.setDescription(description);
+
+            model.update(transaction);
         }
     }
 
