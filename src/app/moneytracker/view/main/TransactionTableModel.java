@@ -12,11 +12,12 @@ import java.util.List;
 
 public class TransactionTableModel extends AbstractTableModel implements TransactionObserver {
 
-    private static final String[] COLUMN_NAMES = {"Category", "Amount", "Date", "Description"};
-    private static final int CATEGORY = 0;
-    private static final int AMOUNT = 1;
-    private static final int DATE = 2;
-    private static final int DESCRIPTION = 3;
+    private static final String[] COLUMN_NAMES = {"#", "Category", "Amount", "Date", "Description"};
+    public static final int CATEGORY_TYPE = 0;
+    public static final int CATEGORY = 1;
+    public static final int AMOUNT = 2;
+    public static final int DATE = 3;
+    public static final int DESCRIPTION = 4;
 
     private List<Transaction> transactions = new ArrayList<>();
 
@@ -37,9 +38,12 @@ public class TransactionTableModel extends AbstractTableModel implements Transac
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
+
         Transaction transaction = transactions.get(rowIndex);
-        if (columnIndex == CATEGORY) {
-            Category category = Categories.getInstance().getCategoryById(transaction.getCategoryId());
+        Category category = Categories.getInstance().getCategoryById(transaction.getCategoryId());
+        if (columnIndex == CATEGORY_TYPE) {
+            return category.getIsExpense() ? "-" : "+";
+        } else if (columnIndex == CATEGORY) {
             return category.getName();
         } else if (columnIndex == AMOUNT) {
             return transaction.getAmount();

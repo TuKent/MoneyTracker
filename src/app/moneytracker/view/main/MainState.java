@@ -7,6 +7,8 @@ import app.moneytracker.model.transaction.TransactionModelImpl;
 import app.moneytracker.state.Pane;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableColumnModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -27,6 +29,8 @@ public class MainState extends Pane {
 
     public MainState() {
 
+        model = new TransactionModelImpl();
+
         setComponent(rootPanel);
 
         initUiComponents();
@@ -34,12 +38,7 @@ public class MainState extends Pane {
 
     private void initUiComponents() {
 
-        model = new TransactionModelImpl();
-
-        transactionTableModel = new TransactionTableModel();
-        model.registerObserver(transactionTableModel);
-
-        transactionTable.setModel(transactionTableModel);
+        initTransactionTable();
 
         newButton.addActionListener(new ActionListener() {
             @Override
@@ -61,6 +60,27 @@ public class MainState extends Pane {
                 onDeleteClicked(e);
             }
         });
+    }
+
+    private void initTransactionTable() {
+
+        transactionTableModel = new TransactionTableModel();
+        model.registerObserver(transactionTableModel);
+
+        transactionTable.setModel(transactionTableModel);
+
+        transactionTable.getTableHeader().setReorderingAllowed(false);
+
+        TableColumnModel columnModel = transactionTable.getColumnModel();
+        columnModel.getColumn(TransactionTableModel.CATEGORY_TYPE).setMaxWidth(20);
+
+        DefaultTableCellRenderer alignCenter = new DefaultTableCellRenderer();
+        alignCenter.setHorizontalAlignment(JLabel.CENTER);
+        transactionTable.getColumnModel().getColumn(TransactionTableModel.CATEGORY_TYPE).setCellRenderer(alignCenter);
+
+        DefaultTableCellRenderer alignLeft = new DefaultTableCellRenderer();
+        alignLeft.setHorizontalAlignment(JLabel.CENTER);
+        transactionTable.getColumnModel().getColumn(TransactionTableModel.AMOUNT).setCellRenderer(alignCenter);
     }
 
     private void onNewClicked(ActionEvent e) {
