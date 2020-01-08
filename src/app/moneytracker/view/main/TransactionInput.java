@@ -36,8 +36,12 @@ public class TransactionInput {
 
         initUIComponents();
 
+        Category category = Categories.getInstance().getCategoryById(transaction.getCategoryId());
+
         idField.setText(String.valueOf(transaction.getId()));
+        categoryField.setSelectedItem(category.getName());
         amountField.setText(String.valueOf(transaction.getAmount()));
+        dateChooser.setDate(new Date(transaction.getTimeInMillis()));
         descriptionField.setText(transaction.getDescription());
     }
 

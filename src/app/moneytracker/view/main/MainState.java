@@ -1,7 +1,8 @@
 package app.moneytracker.view.main;
 
 import app.moneytracker.controller.transaction.TransactionController;
-import app.moneytracker.controller.transaction.TransactionControllerImpl;
+import app.moneytracker.controller.transaction.TransactionControllerFactory;
+import app.moneytracker.model.transaction.Transaction;
 import app.moneytracker.model.transaction.TransactionModel;
 import app.moneytracker.model.transaction.TransactionModelImpl;
 import app.moneytracker.state.Pane;
@@ -84,11 +85,18 @@ public class MainState extends Pane {
     }
 
     private void onNewClicked(ActionEvent e) {
-        TransactionController controller = new TransactionControllerImpl(rootPanel, model);
+        TransactionController controller = TransactionControllerFactory.newInstance(rootPanel, model);
         controller.newTransaction();
     }
 
     private void onEditClicked(ActionEvent e) {
+
+        int rowIndex = transactionTable.getSelectedRow();
+        if (rowIndex != -1) {
+            Transaction transaction = transactionTableModel.getTransaction(rowIndex);
+            TransactionController controller = TransactionControllerFactory.newInstance(rootPanel, model);
+            controller.editTransaction(transaction);
+        }
     }
 
     private void onDeleteClicked(ActionEvent e) {

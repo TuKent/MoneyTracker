@@ -61,4 +61,8 @@ public class TransactionTableModel extends AbstractTableModel implements Transac
         this.transactions.addAll(transactions);
         this.fireTableDataChanged();
     }
+
+    public Transaction getTransaction(int rowIndex) {
+        return transactions.get(rowIndex);
+    }
 }

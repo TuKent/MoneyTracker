@@ -9,7 +9,7 @@ import app.moneytracker.view.main.TransactionInput;
 import javax.swing.*;
 import java.awt.*;
 
-public class TransactionControllerImpl implements TransactionController {
+class TransactionControllerImpl implements TransactionController {
 
     private Component parentComponent;
     private TransactionModel model;
@@ -31,18 +31,24 @@ public class TransactionControllerImpl implements TransactionController {
             long timeInMillis = input.getTimeInMillis();
             String description = input.getDescription();
 
-            Transaction transaction = new Transaction(0,
+            Transaction newTransaction = new Transaction(0,
                     Account.getInstance().getUserId(),
                     category.getId(),
                     amount,
                     timeInMillis,
                     description);
-            model.add(transaction);
+            model.add(newTransaction);
         }
     }
 
     @Override
     public void editTransaction(Transaction transaction) {
+
+        TransactionInput input = TransactionInput.editTransaction(transaction);
+
+        int option = JOptionPane.showConfirmDialog(parentComponent, input.getRootPanel(), "Edit Transaction", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
+        if (option == JOptionPane.OK_OPTION) {
+        }
     }
 
     @Override
