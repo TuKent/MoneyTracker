@@ -22,6 +22,7 @@ public class CategoryDaoImpl implements CategoryDao {
 
         Database db = new Database();
         String SQL_INSERT_CATEGORY = "INSERT INTO Categories(Name,IsExpense) VALUES(?,?)";
+
         try {
             PreparedStatement ps = db.getConnection().prepareStatement(SQL_INSERT_CATEGORY, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, category.getName());
@@ -42,7 +43,21 @@ public class CategoryDaoImpl implements CategoryDao {
     }
 
     @Override
-    public void update(Category category) {
+    public void update(Category category,int id) {
+        Database db = new Database();
+        final String SQL_UPDATE_CATEGORY_BY_ID = "UPDATE Categories SET Name = ?, IsExpense = ? WHERE ID = ?";
+
+        try {
+            PreparedStatement ps = db.getConnection().prepareStatement(SQL_UPDATE_CATEGORY_BY_ID);
+            ps.setString(1, category.getName());
+            ps.setBoolean(2, category.getIsExpense());
+            ps.setInt(3, id);
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        db.close();
     }
 
     @Override

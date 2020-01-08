@@ -21,7 +21,11 @@ class CategoryModelImpl implements CategoryModel {
     }
 
     @Override
-    public void update(Category category) {
+    public void update(Category category,int id) {
+        CategoryDao dao = new CategoryDaoImpl();
+        dao.update(category,id);
+        notifyObservers();
+
     }
 
     @Override

@@ -8,7 +8,7 @@ public interface CategoryModel {
 
     void add(Category category);
 
-    void update(Category category);
+    void update(Category category,int id);
 
     void remove(int id);
 
