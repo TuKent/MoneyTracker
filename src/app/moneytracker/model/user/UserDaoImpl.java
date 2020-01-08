@@ -47,10 +47,11 @@ public class UserDaoImpl implements UserDao {
     public User getUser(String username) {
 
         Database db = new Database();
+        User user = null;
         try {
-            final String SQL_GET_USERNAME_AND_PASSWORD = "SELECT * FROM Users WHERE Username=?";
+            final String SQL_GET_USER_ACCOUNT = "SELECT * FROM Users WHERE Username=?";
 
-            PreparedStatement ps = db.getConnection().prepareStatement(SQL_GET_USERNAME_AND_PASSWORD);
+            PreparedStatement ps = db.getConnection().prepareStatement(SQL_GET_USER_ACCOUNT);
             ps.setString(1, username);
 
             ResultSet rs = ps.executeQuery();
@@ -58,13 +59,12 @@ public class UserDaoImpl implements UserDao {
                 int id = rs.getInt(1);
                 String strUsername = rs.getString(2);
                 String strPassword = rs.getString(3);
-                User user = new User(id, strUsername,strPassword);
-                return user;
+                user = new User(id, strUsername,strPassword);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         db.close();
-        return null;
+        return user;
     }
 }

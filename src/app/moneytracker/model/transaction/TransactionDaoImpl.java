@@ -17,6 +17,7 @@ public class TransactionDaoImpl implements TransactionDao {
     @Override
     public void insert(Transaction transaction) {
 
+        System.out.println("Insert transaction....begin");
         Database db = new Database();
         String SQL_INSERT_TRANSACTION = "INSERT INTO Transactions(UserId,CategoryId,Amount,TimeInSeconds,Description) VALUES(?,?,?,?,?)";
         try {
@@ -39,6 +40,7 @@ public class TransactionDaoImpl implements TransactionDao {
             e.printStackTrace();
         }
         db.close();
+        System.out.println("Insert transaction....end");
     }
 
     @Override

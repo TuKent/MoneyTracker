@@ -63,6 +63,7 @@ public class Database {
         if (connection != null) {
             try {
                 connection.close();
+                connection = null;
             } catch (SQLException e) {
                 e.printStackTrace();
             }
