@@ -1,5 +1,7 @@
 package app.moneytracker.model;
 
+import org.sqlite.SQLiteConfig;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -15,7 +17,9 @@ public class Database {
 
         final String url = "jdbc:sqlite:" + DB_PATH;
         try {
-            connection = DriverManager.getConnection(url);
+            SQLiteConfig config = new SQLiteConfig();
+            config.enforceForeignKeys(true);
+            connection = DriverManager.getConnection(url, config.toProperties());
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -45,7 +49,13 @@ public class Database {
                 + "    CategoryId integer NOT NULL,\n"
                 + "    Amount real NOT NULL,\n"
                 + "    TimeInMillis integer NOT NULL,\n"
-                + "    Description text\n"
+                + "    Description text,\n"
+                + "    FOREIGN KEY (UserId)\n"
+                + "         REFERENCES Users(ID)\n"
+                + "             ON DELETE CASCADE,\n"
+                + "    FOREIGN KEY (CategoryId)\n"
+                + "         REFERENCES Categories(ID)\n"
+                + "             ON DELETE CASCADE\n"
                 + ");";
 
         try {
