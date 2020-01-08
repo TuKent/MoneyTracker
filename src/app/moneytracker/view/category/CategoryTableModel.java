@@ -30,6 +30,11 @@ public class CategoryTableModel extends AbstractTableModel implements CategoryOb
         return COLUMN_NAMES[column];
     }
 
+    public Category getValueAt(int rowIndex)
+    {
+        return categories.get(rowIndex);
+    }
+
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         Category category = categories.get(rowIndex);

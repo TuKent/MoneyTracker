@@ -1,8 +1,11 @@
 package app.moneytracker.view.category;
 
+import app.moneytracker.controller.category.CategoryController;
+import app.moneytracker.controller.category.CategoryControllerImpl;
 import app.moneytracker.model.category.Categories;
 import app.moneytracker.controller.category.NewCategoryController;
 import app.moneytracker.controller.category.NewCategoryControllerImpl;
+import app.moneytracker.model.category.Category;
 import app.moneytracker.model.category.CategoryModel;
 import app.moneytracker.state.Pane;
 import app.moneytracker.state.State;
@@ -78,6 +81,15 @@ public class CategoryState extends Pane {
     }
 
     private void onEditClicked(ActionEvent e) {
+        CategoryController controller = new CategoryControllerImpl(rootPanel, model, new CategoryInput());
+        CategoryTableModel tableModel = (CategoryTableModel) categoryTable.getModel();
+        int row = categoryTable.getSelectedRow();
+
+
+        if (row >= 0) {
+            Category category = tableModel.getValueAt(row);
+            controller.updateCategory(category.getId());
+        }
     }
 
     private void onDeleteClicked(ActionEvent e) {
