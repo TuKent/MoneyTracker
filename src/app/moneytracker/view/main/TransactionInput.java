@@ -1,10 +1,12 @@
 package app.moneytracker.view.main;
 
+import app.moneytracker.model.category.Categories;
 import app.moneytracker.model.category.Category;
 import app.moneytracker.model.transaction.Transaction;
 import com.toedter.calendar.JDateChooser;
 
 import javax.swing.*;
+import java.util.List;
 
 public class TransactionInput {
 
@@ -25,9 +27,14 @@ public class TransactionInput {
     }
 
     private TransactionInput() {
+
+        initUIComponents();
     }
 
     private TransactionInput(Transaction transaction) {
+
+        initUIComponents();
+
         idField.setText(String.valueOf(transaction.getId()));
         amountField.setText(String.valueOf(transaction.getAmount()));
         descriptionField.setText(transaction.getDescription());
@@ -37,12 +44,21 @@ public class TransactionInput {
         dateChooser = new JDateChooser();
     }
 
+    private void initUIComponents() {
+
+        List<Category> categories = Categories.getInstance().getCategories();
+        for (Category category: categories) {
+            categoryField.addItem(category.getName());
+        }
+    }
+
     public JPanel getRootPanel() {
         return rootPanel;
     }
 
     public Category getCategory() {
-        return null;
+        String name = categoryField.getSelectedItem().toString();
+        return Categories.getInstance().getCategoryByName(name);
     }
 
     public float getAmount() {

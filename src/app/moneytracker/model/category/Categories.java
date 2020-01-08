@@ -35,6 +35,15 @@ public class Categories implements CategoryObserver {
         return null;
     }
 
+    public Category getCategoryByName(String name) {
+        for (Category category: categories) {
+            if (category.getName().equals(name)) {
+                return category;
+            }
+        }
+        return null;
+    }
+
     public List<Category> getCategories() {
         return categories;
     }
