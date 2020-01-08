@@ -21,20 +21,21 @@ public class TransactionControllerImpl implements TransactionController {
 
     @Override
     public void newTransaction() {
+
         TransactionInput input = TransactionInput.newTransaction();
 
         int option = JOptionPane.showConfirmDialog(parentComponent, input.getRootPanel(), "New Transaction", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
         if (option == JOptionPane.OK_OPTION) {
-
             Category category = input.getCategory();
             float amount = input.getAmount();
+            long timeInMillis = input.getTimeInMillis();
             String description = input.getDescription();
 
             Transaction transaction = new Transaction(0,
                     Account.getInstance().getUserId(),
                     category.getId(),
                     amount,
-                    0,
+                    timeInMillis,
                     description);
             model.add(transaction);
         }

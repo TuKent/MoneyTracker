@@ -6,18 +6,18 @@ public class Transaction {
     private int userId;
     private int categoryId;
     private float amount;
-    private int timeInSeconds;
+    private long timeInMillis;
     private String description;
 
     public Transaction() {
     }
 
-    public Transaction(int id, int userId, int categoryId, float amount, int timeInSeconds, String description) {
+    public Transaction(int id, int userId, int categoryId, float amount, long timeInMillis, String description) {
         this.id = id;
         this.userId = userId;
         this.categoryId = categoryId;
         this.amount = amount;
-        this.timeInSeconds = timeInSeconds;
+        this.timeInMillis = timeInMillis;
         this.description = description;
     }
 
@@ -53,12 +53,12 @@ public class Transaction {
         this.amount = amount;
     }
 
-    public int getTimeInSeconds() {
-        return timeInSeconds;
+    public long getTimeInMillis() {
+        return timeInMillis;
     }
 
-    public void setTimeInSeconds(int timeInSeconds) {
-        this.timeInSeconds = timeInSeconds;
+    public void setTimeInMillis(long timeInMillis) {
+        this.timeInMillis = timeInMillis;
     }
 
     public String getDescription() {

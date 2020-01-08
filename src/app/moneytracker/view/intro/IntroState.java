@@ -1,6 +1,5 @@
 package app.moneytracker.view.intro;
 
-import app.moneytracker.model.Database;
 import app.moneytracker.state.Pane;
 import app.moneytracker.state.State;
 import app.moneytracker.state.StateManager;
@@ -22,10 +21,6 @@ public class IntroState extends Pane {
             public void run() {
 
                 try {
-                    Database db = new Database();
-                    db.initiate();
-                    db.close();
-
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();

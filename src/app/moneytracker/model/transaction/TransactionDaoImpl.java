@@ -18,13 +18,13 @@ public class TransactionDaoImpl implements TransactionDao {
     public void insert(Transaction transaction) {
 
         Database db = new Database();
-        String SQL_INSERT_TRANSACTION = "INSERT INTO Transactions(UserId,CategoryId,Amount,TimeInSeconds,Description) VALUES(?,?,?,?,?)";
+        String SQL_INSERT_TRANSACTION = "INSERT INTO Transactions(UserId,CategoryId,Amount,TimeInMillis,Description) VALUES(?,?,?,?,?)";
         try {
             PreparedStatement ps = db.getConnection().prepareStatement(SQL_INSERT_TRANSACTION, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, transaction.getUserId());
             ps.setInt(2, transaction.getCategoryId());
             ps.setFloat(3, transaction.getAmount());
-            ps.setInt(4, transaction.getTimeInSeconds());
+            ps.setLong(4, transaction.getTimeInMillis());
             ps.setString(5, transaction.getDescription());
             ps.executeUpdate();
 
@@ -65,7 +65,7 @@ public class TransactionDaoImpl implements TransactionDao {
                 int userId = rs.getInt(2);
                 int categoryId = rs.getInt(3);
                 float amount = rs.getFloat(4);
-                int timeInSeconds = rs.getInt(5);
+                long timeInSeconds = rs.getLong(5);
                 String description = rs.getString(6);
 
                 Transaction t = new Transaction(id, userId, categoryId, amount, timeInSeconds, description);

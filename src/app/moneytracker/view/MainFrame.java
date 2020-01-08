@@ -1,5 +1,6 @@
 package app.moneytracker.view;
 
+import app.moneytracker.model.Database;
 import app.moneytracker.state.State;
 import app.moneytracker.state.StateManager;
 import app.moneytracker.view.category.CategoryState;
@@ -28,9 +29,16 @@ public class MainFrame extends JFrame {
         stateManager = StateManager.getInstance();
         stateManager.initiate(contentPanel);
 
+        initDatabase();
         initComponents();
 
         stateManager.show(State.INTRO);
+    }
+
+    private void initDatabase() {
+        Database db = new Database();
+        db.initiate();
+        db.close();
     }
 
     private void initComponents() {

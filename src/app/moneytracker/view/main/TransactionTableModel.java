@@ -1,10 +1,13 @@
 package app.moneytracker.view.main;
 
+import app.moneytracker.model.category.Categories;
+import app.moneytracker.model.category.Category;
 import app.moneytracker.model.transaction.Transaction;
 import app.moneytracker.model.transaction.TransactionObserver;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class TransactionTableModel extends AbstractTableModel implements TransactionObserver {
@@ -36,12 +39,14 @@ public class TransactionTableModel extends AbstractTableModel implements Transac
     public Object getValueAt(int rowIndex, int columnIndex) {
         Transaction transaction = transactions.get(rowIndex);
         if (columnIndex == CATEGORY) {
-            return transaction.getCategoryId();
+            Category category = Categories.getInstance().getCategoryById(transaction.getCategoryId());
+            return category.getName();
         } else if (columnIndex == AMOUNT) {
             return transaction.getAmount();
         } else if (columnIndex == DATE) {
-            return transaction.getTimeInSeconds();
-        } else{
+            Date date = new Date(transaction.getTimeInMillis());
+            return date;
+        } else {
             return transaction.getDescription();
         }
     }

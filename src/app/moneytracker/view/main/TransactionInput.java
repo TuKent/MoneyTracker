@@ -6,6 +6,7 @@ import app.moneytracker.model.transaction.Transaction;
 import com.toedter.calendar.JDateChooser;
 
 import javax.swing.*;
+import java.util.Date;
 import java.util.List;
 
 public class TransactionInput {
@@ -41,13 +42,15 @@ public class TransactionInput {
     }
 
     private void createUIComponents() {
+        Date now = new Date(System.currentTimeMillis());
         dateChooser = new JDateChooser();
+        dateChooser.setDate(now);
     }
 
     private void initUIComponents() {
 
         List<Category> categories = Categories.getInstance().getCategories();
-        for (Category category: categories) {
+        for (Category category : categories) {
             categoryField.addItem(category.getName());
         }
     }
@@ -57,7 +60,7 @@ public class TransactionInput {
     }
 
     public Category getCategory() {
-        String name = categoryField.getSelectedItem().toString();
+        String name = (String) categoryField.getSelectedItem();
         return Categories.getInstance().getCategoryByName(name);
     }
 
@@ -69,6 +72,10 @@ public class TransactionInput {
             e.printStackTrace();
         }
         return amount;
+    }
+
+    public long getTimeInMillis() {
+        return dateChooser.getDate().getTime();
     }
 
     public String getDescription() {
