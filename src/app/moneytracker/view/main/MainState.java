@@ -100,7 +100,17 @@ public class MainState extends Pane {
     }
 
     private void onDeleteClicked(ActionEvent e) {
+        int option = JOptionPane.showConfirmDialog(rootPanel,"Do you want to delete this Category ? ","Delete Category",JOptionPane.YES_NO_OPTION,JOptionPane.PLAIN_MESSAGE);
+        if (option == JOptionPane.YES_NO_OPTION)
+        {
+            int rowIndex = transactionTable.getSelectedRow();
+            if (rowIndex != -1) {
+                Transaction transaction = transactionTableModel.getTransaction(rowIndex);
+                model.remove(transaction.getId());
+            }
+        }
     }
+
 
     @Override
     public void onPaneOpened() {

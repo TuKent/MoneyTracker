@@ -31,7 +31,6 @@ public class TransactionModelImpl implements TransactionModel {
         TransactionDao dao = new TransactionDaoImpl();
         dao.delete(id);
         notifyObservers();
-
     }
 
     @Override

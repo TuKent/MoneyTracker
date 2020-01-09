@@ -3,6 +3,7 @@ package app.moneytracker.model.transaction;
 import app.moneytracker.model.Database;
 import app.util.Debug;
 
+import javax.xml.crypto.Data;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -69,6 +70,21 @@ public class TransactionDaoImpl implements TransactionDao {
 
     @Override
     public void delete(int id) {
+
+        Database db = new Database();
+        final String SQL_DELETE_TRANSACTION_BY_ID = "DELETE FROM Transactions WHERE ID=?";
+
+        try
+        {
+            PreparedStatement ps = db.getConnection().prepareStatement(SQL_DELETE_TRANSACTION_BY_ID);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+
+            Debug.i(TAG, "Deleted Category id: " + id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 
     @Override
