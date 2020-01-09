@@ -83,9 +83,8 @@ public class CategoryState extends Pane {
     private void onEditClicked(ActionEvent e) {
         CategoryController controller = new CategoryControllerImpl(rootPanel, model, new CategoryInput());
         CategoryTableModel tableModel = (CategoryTableModel) categoryTable.getModel();
+
         int row = categoryTable.getSelectedRow();
-
-
         if (row >= 0) {
             Category category = tableModel.getValueAt(row);
             controller.updateCategory(category.getId());
@@ -93,6 +92,15 @@ public class CategoryState extends Pane {
     }
 
     private void onDeleteClicked(ActionEvent e) {
+        CategoryController controller = new CategoryControllerImpl(rootPanel,model,new CategoryInput());
+        CategoryTableModel tableModel = (CategoryTableModel) categoryTable.getModel();
+
+        int row = categoryTable.getSelectedRow();
+        if (row >= 0)
+        {
+            Category category = tableModel.getValueAt(row);
+            controller.deleteCategory(category.getId());
+        }
     }
 
     @Override

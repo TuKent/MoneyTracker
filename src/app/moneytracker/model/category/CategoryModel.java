@@ -12,8 +12,6 @@ public interface CategoryModel {
 
     void remove(int id);
 
-    List<Category> getAllCategories();
-
     void registerObserver(CategoryObserver observer);
 
     void unregisterObserver(CategoryObserver observer);

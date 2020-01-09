@@ -30,12 +30,15 @@ class CategoryModelImpl implements CategoryModel {
 
     @Override
     public void remove(int id) {
+        CategoryDao dao = new CategoryDaoImpl();
+        dao.delete(id);
+        notifyObservers();
     }
 
-    @Override
-    public List<Category> getAllCategories() {
-        return null;
-    }
+//    @Override
+//    public List<Category> getAllCategories() {
+//        return null;
+//    }
 
     @Override
     public void registerObserver(CategoryObserver observer) {

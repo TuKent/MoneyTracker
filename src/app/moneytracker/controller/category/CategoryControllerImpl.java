@@ -33,4 +33,13 @@ import java.awt.*;
             model.update(category,id);
         }
     }
-}
+
+        @Override
+        public void deleteCategory(int id) {
+            int option = JOptionPane.showConfirmDialog(parent,"Do you want to delete this Category ? ","Delete Category",JOptionPane.YES_NO_OPTION,JOptionPane.PLAIN_MESSAGE);
+            if (option == JOptionPane.YES_OPTION)
+            {
+                model.remove(id);
+            }
+        }
+    }

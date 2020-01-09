@@ -19,7 +19,6 @@ public class CategoryDaoImpl implements CategoryDao {
 
     @Override
     public void insert(Category category) {
-
         Database db = new Database();
         String SQL_INSERT_CATEGORY = "INSERT INTO Categories(Name,IsExpense) VALUES(?,?)";
 
@@ -43,7 +42,7 @@ public class CategoryDaoImpl implements CategoryDao {
     }
 
     @Override
-    public void update(Category category,int id) {
+    public void update(Category category, int id) {
         Database db = new Database();
         final String SQL_UPDATE_CATEGORY_BY_ID = "UPDATE Categories SET Name = ?, IsExpense = ? WHERE ID = ?";
 
@@ -54,6 +53,8 @@ public class CategoryDaoImpl implements CategoryDao {
             ps.setInt(3, id);
             ps.executeUpdate();
 
+            int result = ps.executeUpdate();
+            Debug.i(TAG, "Updated Category id: " + id);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -62,11 +63,23 @@ public class CategoryDaoImpl implements CategoryDao {
 
     @Override
     public void delete(int id) {
+        Database db = new Database();
+        String SQL_DELELE_CATEGORY_BY_ID = "DELETE FROM Categories WHERE ID =?";
+
+        try {
+            PreparedStatement ps = db.getConnection().prepareStatement(SQL_DELELE_CATEGORY_BY_ID);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+
+            Debug.i(TAG, "Updated Category id: " + id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        db.close();
     }
 
     @Override
     public List<Category> getAllCategories() {
-
         Database db = new Database();
         List<Category> categories = new ArrayList<>();
 
@@ -87,8 +100,8 @@ public class CategoryDaoImpl implements CategoryDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         db.close();
         return categories;
     }
+
 }
